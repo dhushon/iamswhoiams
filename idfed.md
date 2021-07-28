@@ -56,7 +56,8 @@ Then select SAML
 AAD will then provide a set of integration points:
 <img src=".//media/image11.png" style="width:6.5in" alt="SAML IdP Integration Keys" />
 
-Click "download" where you see the "3" to download the Base64 Certificate
+Click "Download" where you see the "3" to download the Base64 Certificate
+
 <img src=".//media/image10.png" style="width:4.80556" alt="Download IdP Certificat to local host" />
 
 ### Setup Okta with Azure AD as Identity Provider (IdP)
@@ -77,9 +78,10 @@ In a new window or tab (recognizing that you will be cutting and pasting between
 
 6.  Enter the following information (choose a name of your choice)
 
-    1.  Enabling JIT is a personal choice. You can choose not to enable
-        JIT if you don’t want Okta to auto-create users when they login
-        for the first time using Azure AD account.
+> Enabling JIT is a choice. You can choose not to enable
+> JIT if you don’t want Okta to auto-create users when they login
+> for the first time using Azure AD account. Given the "provision thru" model of our 
+> user-story and automation, it is an important facet of the layered provisioning and routing.
 
 7.  <img src=".//media/image15.png" style="width:6.16181in" /><img src=".//media/image16.png" style="width:6.16181in" />Copy & paste SAML protocol settings from Azure AD to Okta paying special attention to the fact that from the Azure Setup/Signing Certificate and Okta the field order shifts.
 <img src=".//media/image17.png" style="width:6.5in" />
@@ -110,6 +112,8 @@ Now you can test the log thru semantics in Azure AD.
 12. My configuration required one last setting, the assignment of IdP users/groups to the Application “Okta SP” as individuals need to be permissioned for the service. This might be an interesting place to ensure that employees are trained before allowing their credentials to be authorized for use in the ATD environment.
 
 ## Federating Okta as an IdP to AWS as an SP
+
+Step 2: [here](/oktaIdpAws.md)
 
 ## Automation Development
 
