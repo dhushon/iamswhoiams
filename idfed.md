@@ -53,21 +53,14 @@ Click Setup Single Sign On
 Then select SAML
 
 <img src=".//media/image8.png" style="width:6.5in" alt="Graphical user interface, application Description automatically generated" />
-
 AAD will then provide a set of integration points:
+<img src=".//media/image11.png" style="width:6.5in" alt="SAML IdP Integration Keys" />
 
-<img src=".//media/image9.png" style="width:6.5in;height:3.33125in" alt="Graphical user interface, text, application, email Description automatically generated" />
-
-Click to download the Base64 Certificate
-
-<img src=".//media/image10.png" style="width:4.80556in;height:1.83333in" alt="Graphical user interface Description automatically generated with low confidence" />
-
-Open a new window (as you will need to go back to pickup additional
-information between this AAD window and the Okta Window
-
-<img src=".//media/image11.png" style="width:6.5in;height:4.09375in" alt="Graphical user interface, text, application, email Description automatically generated" />
+Click "download" where you see the "3" to download the Base64 Certificate
+<img src=".//media/image10.png" style="width:4.80556" alt="Download IdP Certificat to local host" />
 
 ### Setup Okta with Azure AD as Identity Provider (IdP)
+In a new window or tab (recognizing that you will be cutting and pasting between the okta and azure ad management consoles...
 
 1.  Log into your Okta tenant / or secure a trial tenant and configure
 
@@ -88,49 +81,33 @@ information between this AAD window and the Okta Window
         JIT if you don’t want Okta to auto-create users when they login
         for the first time using Azure AD account.
 
-7.  <img src=".//media/image15.png" style="width:6.16181in;height:2.51389in" /><img src=".//media/image16.png" style="width:6.16181in;height:4.80903in" />Copy
-    & paste SAML protocol settings from Azure AD to Okta paying special
-    attention to the fact that from the Azure Setup/Signing Certificate
-    and Okta the order shifts.
-
-<img src=".//media/image17.png" style="width:6.5in;height:2in" />
+7.  <img src=".//media/image15.png" style="width:6.16181in" /><img src=".//media/image16.png" style="width:6.16181in" />Copy & paste SAML protocol settings from Azure AD to Okta paying special attention to the fact that from the Azure Setup/Signing Certificate and Okta the field order shifts.
+<img src=".//media/image17.png" style="width:6.5in" />
 
 8.  Now Click ‘Add Identity Provider’
-
-<img src=".//media/image18.png" style="width:6.5in;height:4.00556in" alt="Graphical user interface, text, application Description automatically generated" />
+<img src=".//media/image18.png" style="width:6.5in" alt="Graphical user interface, text, application Description automatically generated" />
 
 9.  Now go back and expand the Identity provider
+<img src=".//media/image19.png" style="width:6.5in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
-<img src=".//media/image19.png" style="width:6.5in;height:2.93403in" alt="Graphical user interface, text, application, email Description automatically generated" />
-
-10. And COPY the two SAML protocol settings from Okta to Azure AD (note
-    a reversed order again)
-
+10. And COPY the two SAML protocol settings from Okta to Azure AD (note a reversed field / text entry box order again)
 <img src=".//media/image20.png" style="width:6.5in;height:2.76944in" alt="Graphical user interface, text, application Description automatically generated" />
 
-Inbound Federation is now complete
+Inbound Federation is now complete!
 
 ### Mapping the “Claims”
 
-The IdP responds to authentication requests with a token that includes
-meta data that is useful for establishing identity, groups, roles and
-other potential decisioning within the upstream Provider.
+The IdP responds to authentication requests with a token that include meta data that is useful for establishing identity, groups, roles and other potential decisioning within the upstream Provider.
 
-<img src=".//media/image21.png" style="width:6.5in;height:3.56389in" alt="Graphical user interface, text, application, email Description automatically generated" />
+<img src=".//media/image21.png" style="width:6.5in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
-11. Click on ‘Edit’ to update the claims. Importantly the Claim Name
-    must match the field names in Okta directly. As such nomenclature
-    such as namespace definitions must be removed, and the keys matched.
+11. Click on ‘Edit’ to update the claims. Importantly the Claim Name must match the field names in Okta directly. As such nomenclature such as namespace definitions must be removed, and the keys matched.
 
 ### Testing the SP->IdP Inbound Federation
 
 Now you can test the log thru semantics in Azure AD.
 
-12. My configuration required one last setting, the assignment of IdP
-    users/groups to the Application “Okta SP” as individuals need to be
-    permissioned for the service. This might be an interesting place to
-    ensure that employees are trained before allowing their credentials
-    to be authorized for use in the ATD environment.
+12. My configuration required one last setting, the assignment of IdP users/groups to the Application “Okta SP” as individuals need to be permissioned for the service. This might be an interesting place to ensure that employees are trained before allowing their credentials to be authorized for use in the ATD environment.
 
 ## Federating Okta as an IdP to AWS as an SP
 
