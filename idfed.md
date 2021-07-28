@@ -82,8 +82,9 @@ In a new window or tab (recognizing that you will be cutting and pasting between
 > JIT if you don’t want Okta to auto-create users when they login
 > for the first time using Azure AD account. Given the "provision thru" model of our 
 > user-story and automation, it is an important facet of the layered provisioning and routing.
+<img src=".//media/image15.png" style="width:6.16181in" />
 
-7.  <img src=".//media/image15.png" style="width:6.16181in" /><img src=".//media/image16.png" style="width:6.16181in" />Copy & paste SAML protocol settings from Azure AD to Okta paying special attention to the fact that from the Azure Setup/Signing Certificate and Okta the field order shifts.
+7.  Copy & paste SAML protocol settings from Azure AD to Okta paying special attention to the fact that from the Azure Setup/Signing Certificate and Okta the field order shifts.
 <img src=".//media/image17.png" style="width:6.5in" />
 
 8.  Now Click ‘Add Identity Provider’
@@ -99,7 +100,7 @@ Inbound Federation is now complete!
 
 ### Mapping the “Claims”
 
-The IdP responds to authentication requests with a token that include meta data that is useful for establishing identity, groups, roles and other potential decisioning within the upstream Provider.
+The IdP responds to authentication requests with a token that include meta data that is useful for establishing identity, groups, roles and other potential decisioning within the upstream Provider.  In our case we are including companyName / organization and can map this to employees to facilitate Okta JIT adds to employee groups.
 
 <img src=".//media/image21.png" style="width:6.5in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
