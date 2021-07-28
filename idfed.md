@@ -1,62 +1,39 @@
 # Federating AAD with Okta for Multi-Cloud Self-Service Project Creation
 
-The goal of this project is to demonstrate the ability to create a
-non-authoritative Enterprise IdP (SP?) for use in building Advance
-Development Tenancies (ADT) in a variety of Public Cloud and SaaS
-platforms. Since the ADT’s MAY use subscriptions/accounts slaved off 2
-existing parent domains and maybe more provided by clients/partners…,
-it’s important that administrative access be maintained by IT, Security
-and Audit for the purpose of monitoring and emergency actions.
+The goal of this project is to demonstrate the ability to create a non-authoritative Enterprise IdP (SP?) for use in building Advance Development Tenancies (ADT) in a variety of Public Cloud and SaaS platforms. Since the ADT’s MAY use subscriptions/accounts slaved off 2, existing parent domains and maybe more provided by clients/partners, it’s important that administrative access be maintained by IT, Security and Audit for the purpose of monitoring and emergency actions.
 
-At the same time, it is likely that 3<sup>rd</sup> parties will need to
-be involved in the development, integration, and demonstration of these
-projects and as such, an easier way to grant privileged/non-privileged
-principal accounts as well as service accounts will be pre-requisite to
-success.
+At the same time, it is likely that 3<sup>rd</sup> parties will need to be involved in the development, integration, and demonstration of these projects and as such, an easier way to grant privileged/non-privileged principal accounts as well as service accounts will be pre-requisite to success.
 
-To prevent misconfiguration, privilege bleed-thru and resource
-visibility, as well as Commercial/GCC multi-directory challenges, using
-an Hybrid IdP WILL be important to the success of this
-project.<img src=".//media/image1.png" style="width:6.5in;height:2.02847in" />
+To prevent misconfiguration, privilege bleed-thru and resource visibility, as well as Commercial/GCC multi-directory challenges, using an Hybrid IdP WILL be important to the success of this project.<img src=".//media/image1.png" style="width:6.5in" />
 
-The goal being to create a
-[Layered](https://www.okta.com/resources/whitepaper/using-okta-for-hybrid-microsoft-aad-join/)
-IdP/SP Domain capability for ADT in which Okta becomes the delegate
-AuthN/Z provider for the ADT created accounts and services. One
-interesting point is that Okta CAN act as an LDAPS IdP and therefore for
-some remaining DataCenter assets running linux with LDAP, Okta might
-become a more authoritative IdP for those services in it’s hybrid mode.
-Still We do expect that Employees / Devices / Productivity services will
-remain in EAD as the primary IdP whether thru AAD or AD Connect for the
-hybridization.
+The goal being to create a [Layered](https://www.okta.com/resources/whitepaper/using-okta-for-hybrid-microsoft-aad-join/) IdP/SP Domain capability for ADT in which Okta becomes the delegate AuthN/Z provider for the ADT created accounts and services. One interesting point is that Okta CAN act as an LDAPS IdP and therefore for some remaining DataCenter assets running linux with LDAP, Okta might become a more authoritative IdP for those services in it’s hybrid mode.
+
+Still, we do expect that Employees / Devices / Productivity services will remain in EAD as the primary IdP whether thru AAD or AD Connect for the hybridization or authoritative reference.
 
 ## Get Instance of Azure Active Directory (AAD)
 
 Free trials of AAD are available from Microsoft
 [here](https://azure.microsoft.com/en-us/trial/get-started-active-directory/)
 
-<img src=".//media/image2.png" style="width:6.5in;height:2.39236in" alt="Graphical user interface, application Description automatically generated" />
+<img src=".//media/image2.png" style="width:6.5in" alt="Graphical user interface, application Description automatically generated" />
 
-I used my GitHub account to provision my instance and was able to setup
-via the portal. Notice that automation of the creation of specific
-creation, development, promotion, deployment, and destruction inclusive
-of specific Service Principals and the assignment of principals to
-groups will likely leverage the Azure CLI or PowerShell environments for
-continuous changes in membership.
+I used my GitHub account identity to provision my instance and was able to setup via the portal. Notice that automation of the creation of specific creation, development, promotion, deployment, and destruction inclusive of specific Service Principals and the assignment of principals to groups will likely leverage the Azure CLI or PowerShell environments for continuous changes in membership.
 
-<img src=".//media/image3.png" style="width:6.5in;height:3.10347in" alt="Graphical user interface, text, application, email Description automatically generated" />
+<img src=".//media/image3.png" style="width:6.5in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
 ### Provision Users
 
 Click on Manage->Users:
 
-<img src=".//media/image4.png" style="width:6.5in;height:2.49524in" alt="Graphical user interface Description automatically generated" />
+<img src=".//media/image4.png" style="width:6.5in" alt="Create Test Users" />
+To create users - email, firstName, lastName, company and principalEmailAddr are all mappable fields.
 
 ### Provision Groups
 
 Click on Manage->Groups:
 
-<img src=".//media/image5.png" style="width:6.5in;height:2.86667in" alt="Graphical user interface, text, application, email Description automatically generated" />
+<img src=".//media/image5.png" style="width:6.5in;height:2.86667in" alt="Create initial groups" />
+I had started out creating groups so I could add a group to the application vs. each user, but given my trial instance vs. previous, I could not use the group at this point.
 
 ### Configure Azure AD as an Identity Provider \[to a Service Provider
 
@@ -64,21 +41,18 @@ First go into Azure AD -> Add Application (which is a Service Provider)
 and it will take you to the Gallery.
 
 1.  Click on “+ Create your own application”.
-
-2.  A pop-up will appear to right, name your application, I used “Okta
-    SP”
-
+2.  A pop-up will appear to right, name your application, I used “Okta SP”
 3.  Click Create
 
-<img src=".//media/image6.png" style="width:6.5in;height:3.33125in" alt="Graphical user interface, application Description automatically generated" />
+<img src=".//media/image6.png" style="width:6.5in" alt="Graphical user interface, application Description automatically generated" />
 
 Click Setup Single Sign On
 
-<img src=".//media/image7.png" style="width:6.5in;height:3.33125in" alt="Graphical user interface, application, website Description automatically generated" />
+<img src=".//media/image7.png" style="width:6.5in" alt="Graphical user interface, application, website Description automatically generated" />
 
 Then select SAML
 
-<img src=".//media/image8.png" style="width:6.5in;height:3.33125in" alt="Graphical user interface, application Description automatically generated" />
+<img src=".//media/image8.png" style="width:6.5in" alt="Graphical user interface, application Description automatically generated" />
 
 AAD will then provide a set of integration points:
 
