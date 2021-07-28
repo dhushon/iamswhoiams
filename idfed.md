@@ -6,7 +6,7 @@ At the same time, it is likely that 3<sup>rd</sup> parties will need to be invol
 
 To prevent misconfiguration, privilege bleed-thru and resource visibility, as well as Commercial/GCC multi-directory challenges, using an Hybrid IdP WILL be important to the success of this project.<img src=".//media/image1.png" style="width:6.5in" />
 
-The goal being to create a [Layered](https://www.okta.com/resources/whitepaper/using-okta-for-hybrid-microsoft-aad-join/) IdP/SP Domain capability for ADT in which Okta becomes the delegate AuthN/Z provider for the ADT created accounts and services. One interesting point is that Okta CAN act as an LDAPS IdP and therefore for some remaining DataCenter assets running linux with LDAP, Okta might become a more authoritative IdP for those services in it’s hybrid mode.
+The goal being to create a [Layered](https://www.okta.com/resources/whitepaper/using-okta-for-hybrid-microsoft-aad-join/) IdP/SP Domain capability for ADT in which Okta becomes the delegate AuthN/Z provider for the ADT created accounts and services. One interesting point is that Okta CAN act as an LDAPS IdP and therefore for some remaining DataCenter assets running linux with LDAP, Okta might become a more authoritative IdP for those services in it’s hybrid mode.  Still, my experience points to the fact that Okta does enable unified & automated identity-driven security that makes everything easier to deploy, integrate, visualize, and manage.
 
 Still, we do expect that Employees / Devices / Productivity services will remain in EAD as the primary IdP whether thru AAD or AD Connect for the hybridization or authoritative reference.
 
